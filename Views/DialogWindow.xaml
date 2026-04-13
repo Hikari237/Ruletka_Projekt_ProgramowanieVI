@@ -1,0 +1,49 @@
+﻿<Window x:Class="Ruletka.Views.DialogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Rozmowa ze Śmiercią" Height="300" Width="500" 
+        WindowStartupLocation="CenterOwner" Background="#0f0f0f"
+        WindowStyle="ToolWindow" ResizeMode="NoResize">
+
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="WesternBtn">
+            <Setter Property="Background" Value="#2c1a1a"/>
+            <Setter Property="Foreground" Value="#d3b58d"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderBrush" Value="#4a2e2e"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#3d2424"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="15">
+        <Border Background="#141414" BorderBrush="#4a2e2e" BorderThickness="2" CornerRadius="8" Padding="25">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Stretch">
+
+                <TextBlock x:Name="QuestionTxt" 
+                           Text="Śmierć pyta..." 
+                           Foreground="#d3b58d" FontSize="18" FontStyle="Italic" TextWrapping="Wrap" 
+                           TextAlignment="Center" Margin="0,0,0,30"/>
+
+                <Button x:Name="Option1Btn" Content="Opcja 1" Style="{StaticResource WesternBtn}" Height="45" Margin="0,0,0,15" Click="Option1Btn_Click"/>
+                <Button x:Name="Option2Btn" Content="Opcja 2" Style="{StaticResource WesternBtn}" Height="45" Click="Option2Btn_Click"/>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
