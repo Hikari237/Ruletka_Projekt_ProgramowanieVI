@@ -1,0 +1,73 @@
+[
+    {
+        "Question": "Boisz się tego, co po drugiej stronie?",
+        "Option1": "Tak.",
+        "Sympathy1": 10,
+        "Option2": "Nie ma drugiej strony.",
+        "Sympathy2": -10
+    },
+    {
+        "Question": "Dlaczego w ogóle tu przyszedłeś?",
+        "Option1": "Szukam odkupienia.",
+        "Sympathy1": 15,
+        "Option2": "Dla pieniędzy.",
+        "Sympathy2": -5
+    },
+    {
+        "Question": "Ten rewolwer zabił więcej ludzi niż cholera. Czujesz ich krew na rękojeści?",
+        "Option1": "Czuję tylko zimną stal.",
+        "Sympathy1": 10,
+        "Option2": "To tylko narzędzie.",
+        "Sympathy2": -5
+    },
+    {
+        "Question": "Myślisz, że to szczęście trzyma Cię przy życiu, czy moje roztargnienie?",
+        "Option1": "Mam po prostu farta.",
+        "Sympathy1": 5,
+        "Option2": "Sam tworzę swoje szczęście.",
+        "Sympathy2": -15
+    },
+    {
+        "Question": "Co mi oddasz, jeśli pozwolę Ci stąd odejść żywym?",
+        "Option1": "Nie mam nic poza swoim życiem.",
+        "Sympathy1": 15,
+        "Option2": "Duszę pierwszego, którego spotkam.",
+        "Sympathy2": -10
+    },
+    {
+        "Question": "Widzę, jak drżą Ci dłonie. Zimno ci, kowboju?",
+        "Option1": "To od prochu i adrenaliny.",
+        "Sympathy1": 10,
+        "Option2": "Tak. Chcę już stąd iść.",
+        "Sympathy2": -15
+    },
+    {
+        "Question": "Wieczność to strasznie długi czas na żałowanie jednego pociągnięcia za spust.",
+        "Option1": "Nie żałuję niczego.",
+        "Sympathy1": -5,
+        "Option2": "Dlatego celuję w Ciebie.",
+        "Sympathy2": 20
+    },
+    {
+        "Question": "Słyszysz te kruki za oknem? Założą się o Twoje oczy.",
+        "Option1": "Niech ustawią się w kolejce.",
+        "Sympathy1": 15,
+        "Option2": "Odpędź je.",
+        "Sympathy2": -10
+    },
+    {
+        "Question": "Ilu grabarzy zbiło fortunę przez to, że miałeś zły dzień?",
+        "Option1": "Zapewniam im stałą pracę.",
+        "Sympathy1": 10,
+        "Option2": "Zabiłem tylko złych ludzi.",
+        "Sympathy2": -15
+    },
+    
+    {
+        "Question" :"Śmierć milczy... (Błąd: Nie znaleziono pliku dialogs.json)",
+        "Option1" : "Przeładuj broń.",
+        "Sympathy1": 10,
+        "Option2": "Czekaj.",
+        "Sympathy2": -16
+    }
+]

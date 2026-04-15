@@ -21,7 +21,7 @@ namespace Ruletka.Logic
 
            
             Player.Inventory.Add(new Item("Brudny Bandaż (+30 HP)", 30, 0));      // Leczy 30 HP
-            Player.Inventory.Add(new Item("Dobre Cygaro", -5, 15, false));       // Leczy 0, ale Śmierć to szanuje (+15 Sympatii)
+            Player.Inventory.Add(new Item("Dobre Cygaro", -5, 15, false));       // Usuwa 5 hp, ale Śmierć to szanuje (+15 Sympatii)
             Player.Inventory.Add(new Item("Zardzewiała Piersiówka (+15 HP) ", 15, 5)); // Leczy 15 HP i daje +5 Sympatii
         }
 
