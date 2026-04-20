@@ -23,7 +23,7 @@ namespace Ruletka.Database
                         Sympathy INTEGER DEFAULT 0,
                         Deaths INTEGER DEFAULT 0,
                         Wins INTEGER DEFAULT 0
-                    )"; // DODANO Wins
+                    )"; 
 
                 var command = connection.CreateCommand();
                 command.CommandText = createTableQuery;
@@ -38,7 +38,7 @@ namespace Ruletka.Database
             {
                 connection.Open();
                 var command = connection.CreateCommand();
-                command.CommandText = "SELECT Name, Sympathy, Deaths, Wins FROM Players"; // DODANO Wins
+                command.CommandText = "SELECT Name, Sympathy, Deaths, Wins FROM Players"; 
 
                 using (var reader = command.ExecuteReader())
                 {
@@ -46,7 +46,7 @@ namespace Ruletka.Database
                     {
                         var p = new Character(reader.GetString(0), 100, reader.GetInt32(1));
                         p.Deaths = reader.GetInt32(2);
-                        p.Wins = reader.GetInt32(3); // DODANO Wins
+                        p.Wins = reader.GetInt32(3); 
                         players.Add(p);
                     }
                 }
@@ -65,14 +65,14 @@ namespace Ruletka.Database
                     ON CONFLICT(Name) DO UPDATE SET 
                         Sympathy = @sympathy,
                         Deaths = @deaths,
-                        Wins = @wins"; // DODANO Wins
+                        Wins = @wins"; 
 
                 var command = connection.CreateCommand();
                 command.CommandText = query;
                 command.Parameters.AddWithValue("@name", player.Name);
                 command.Parameters.AddWithValue("@sympathy", player.Sympathy);
                 command.Parameters.AddWithValue("@deaths", player.Deaths);
-                command.Parameters.AddWithValue("@wins", player.Wins); // DODANO Wins
+                command.Parameters.AddWithValue("@wins", player.Wins); 
                 command.ExecuteNonQuery();
             }
         }
@@ -84,7 +84,6 @@ namespace Ruletka.Database
             {
                 connection.Open();
                 var command = connection.CreateCommand();
-                // Sortujemy: najpierw Wygrane (DESC), potem Sympatia (DESC)
                 command.CommandText = "SELECT Name, Sympathy, Deaths, Wins FROM Players ORDER BY Wins DESC, Sympathy DESC LIMIT 10";
 
                 using (var reader = command.ExecuteReader())
