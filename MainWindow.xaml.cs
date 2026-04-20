@@ -4,7 +4,7 @@ using System.Windows;
 using Ruletka.Logic;
 using Ruletka.Models;
 using Ruletka.Views;
-using Ruletka.Database; // Ważne do zapisywania wyników
+using Ruletka.Database;
 
 namespace Ruletka
 {
@@ -14,18 +14,18 @@ namespace Ruletka
         private Random _globalRandom = new Random();
         private DialogManager _dialogManager = new DialogManager();
 
-        // KONSTRUKTOR: Teraz przyjmuje cały obiekt Gracza z bazy
+        
         public MainWindow(Character player)
         {
             InitializeComponent();
             _engine = new GameEngine(player.Name);
 
-            // Ładujemy gracza z bazy
+            
             _engine.Player = player;
-            _engine.Player.Health = 100; // Resetujemy HP na nową grę
+            _engine.Player.Health = 100; 
 
             _engine.Death.Sympathy = _engine.Player.Sympathy;
-            // NAPRAWA EKWIPUNKU: Jeśli gracz z bazy ma pusty plecak, dajemy mu przedmioty startowe!
+         
             if (_engine.Player.Inventory.Count == 0)
             {
                 _engine.Player.Inventory.Add(new Item("Brudny Bandaż (+30HP)", 30, 0));
@@ -41,7 +41,7 @@ namespace Ruletka
             PlayerHpTxt.Text = $"HP: {_engine.Player.Health}";
             DeathHpTxt.Text = $"HP: {_engine.Death.Health}";
 
-            // Odświeżanie listy przedmiotów
+
             InventoryComboBox.ItemsSource = null;
             InventoryComboBox.ItemsSource = _engine.Player.Inventory;
 
@@ -57,11 +57,11 @@ namespace Ruletka
             }
         }
 
-        // LOGIKA KOŃCA GRY (Restart lub Menu)
+       
         private void EndGame(string message)
         {
             _engine.Player.Sympathy = _engine.Death.Sympathy;
-            // Zapisujemy statystyki do bazy (sympatia, zgony)
+            
             DbManager.SaveOrUpdatePlayer(_engine.Player);
 
             MessageBoxResult result = MessageBox.Show(
@@ -72,7 +72,7 @@ namespace Ruletka
 
             if (result == MessageBoxResult.Yes)
             {
-                // Restartujemy stan gry
+                
                 _engine.Player.Health = 100;
                 _engine.Death.Health = 100;
                 _engine.Weapon.Reset();
@@ -81,7 +81,7 @@ namespace Ruletka
             }
             else
             {
-                // Powrót do menu logowania
+                
                 LoginWindow menu = new LoginWindow();
                 menu.Show();
                 this.Close();
@@ -93,18 +93,18 @@ namespace Ruletka
             Item selectedItem = (Item)InventoryComboBox.SelectedItem;
             if (selectedItem == null) return;
 
-            // Zmiana statystyk
+            
             _engine.Player.Health += selectedItem.HealAmount;
             if (_engine.Player.Health > 100) _engine.Player.Health = 100;
             _engine.Death.Sympathy += selectedItem.SympathyChange;
 
-            // Komunikat
+            
             string msg = $"Użyto: {selectedItem.Name}.";
             if (selectedItem.HealAmount > 0) msg += $" +{selectedItem.HealAmount} HP.";
             else if (selectedItem.HealAmount < 0) msg += $" Straciłeś {-selectedItem.HealAmount} HP.";
             StatusTxt.Text = msg;
 
-            // Jeśli przedmiot jest zużywalny - usuń. Jeśli nie (Cygaro) - zostaw.
+            
             if (selectedItem.IsConsumable)
             {
                 _engine.Player.Inventory.Remove(selectedItem);
@@ -112,7 +112,7 @@ namespace Ruletka
 
             UpdateUI();
 
-            // Czy palenie Cię zabiło?
+            
             if (_engine.Player.Health <= 0)
             {
                 _engine.Player.Deaths++;
@@ -202,7 +202,7 @@ namespace Ruletka
             }
             else
             {
-                // Losowy dialog
+                
                 if (_globalRandom.Next(0, 100) < 30)
                 {
                     DialogModel randomDialog = _dialogManager.GetRandomDialog();
