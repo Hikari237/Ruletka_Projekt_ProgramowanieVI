@@ -7,7 +7,7 @@ namespace Ruletka.Views
     public partial class DialogWindow : Window
     {
         private GameEngine _engine;
-        private DialogModel _currentDialog; // Pamiętamy wylosowany dialog
+        private DialogModel _currentDialog; 
 
         public DialogWindow(GameEngine engine, DialogModel dialog)
         {
@@ -15,7 +15,7 @@ namespace Ruletka.Views
             _engine = engine;
             _currentDialog = dialog;
 
-            // Podstawiamy teksty z modelu do przycisków i napisów na ekranie
+           
             QuestionTxt.Text = _currentDialog.Question;
             Option1Btn.Content = _currentDialog.Option1;
             Option2Btn.Content = _currentDialog.Option2;

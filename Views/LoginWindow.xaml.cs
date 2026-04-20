@@ -23,7 +23,7 @@ namespace Ruletka.Views
         {
             if (ExistingPlayersCombo.SelectedItem is Character selected)
             {
-                PlayerNameInput.Text = selected.Name; // Automatycznie wpisz imię
+                PlayerNameInput.Text = selected.Name; 
             }
         }
 
@@ -32,7 +32,6 @@ namespace Ruletka.Views
             string name = PlayerNameInput.Text.Trim();
             if (string.IsNullOrEmpty(name)) return;
 
-            // Szukamy czy taki gracz już istnieje w bazie
             List<Character> all = DbManager.GetAllPlayers();
             Character playerToLoad = all.Find(p => p.Name == name);
 
@@ -42,25 +41,24 @@ namespace Ruletka.Views
                 DbManager.SaveOrUpdatePlayer(playerToLoad);
             }
 
-            MainWindow game = new MainWindow(playerToLoad); // PRZEKAZUJEMY CAŁEGO GRACZA, NIE TYLKO IMIĘ
+            MainWindow game = new MainWindow(playerToLoad); 
             game.Show();
             this.Close();
         }
 
         private void ShowRankingBtn_Click(object sender, RoutedEventArgs e)
         {
-            // Tworzymy okno rankingu
+            
             RankingWindow ranking = new RankingWindow();
 
-            // Ustawiamy LoginWindow jako właściciela (żeby okienko wyskoczyło na środku)
+        
             ranking.Owner = this;
 
-            // Wyświetlamy jako okno modalne (zatrzymuje tło, dopóki nie zamkniesz rankingu)
             ranking.ShowDialog();
         }
         private void ExitAppBtn_Click(object sender, RoutedEventArgs e)
         {
-            // Całkowite zamknięcie całej aplikacji
+            
             Application.Current.Shutdown();
         }
     }

@@ -13,7 +13,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Text="ULUBIEŃCY ŚMIERCI (TOP 10)" 
+                <TextBlock Grid.Row="0" Text="TOP 10" 
                            Foreground="#d3b58d" FontSize="20" FontWeight="Bold" 
                            HorizontalAlignment="Left" Margin="31,5,0,10"/>
 
