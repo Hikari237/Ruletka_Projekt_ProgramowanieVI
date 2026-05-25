@@ -1,15 +1,14 @@
-﻿using System.Windows;
-using Ruletka.Database;
+﻿namespace CharacterBible;
 
-namespace Ruletka
+public partial class App : Application
 {
-    public partial class App : Application
+    public App()
     {
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            base.OnStartup(e);
-          
-            DbManager.InitializeDatabase();
-        }
+        InitializeComponent();
+    }
+
+    protected override Window CreateWindow(IActivationState? activationState)
+    {
+        return new Window(new Views.ListPage());
     }
 }
